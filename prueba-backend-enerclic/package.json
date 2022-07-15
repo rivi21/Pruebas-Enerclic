@@ -2,10 +2,12 @@
   "name": "prueba-backend",
   "version": "1.0.0",
   "description": "Api con peticiones GET",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "devstart": "nodemon index.js",
-    "start": "node index.js"
+    "lint": "ts-standard",
+    "tsc": "tsc",
+    "dev": "ts-node-dev src/index.ts",
+    "start": "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +20,22 @@
   },
   "homepage": "https://github.com/rivi21/Pruebas-Enerclic#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "@types/jsonwebtoken": "^8.5.8",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^2.0.0",
+    "ts-standard": "^11.0.0",
+    "typescript": "^4.7.4"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./prueba-backend-enerclic/tsconfig.json"
+    },
+    "extends": [
+      "./node_modules/ts-standard/eslintrc.json"
+    ]
   }
 }
