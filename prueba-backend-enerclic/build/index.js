@@ -7,9 +7,13 @@ const express_1 = __importDefault(require("express"));
 const dataRoutes_1 = __importDefault(require("./routes/dataRoutes"));
 const PORT = 5003;
 const app = (0, express_1.default)();
-app.use('/api/:id', (req, res) => {
-    if (req.is('application/json') === false) {
-        res.status(400).json({ message: 'Content-type incorrect' });
+// Middleware para comprobar el header
+app.use((req, res, next) => {
+    if (req.header('Content-Type') === 'application/json') {
+        next();
+    }
+    else {
+        res.status(415).send({ message: 'Content-type unsopprted' });
     }
 });
 app.use(express_1.default.json());
